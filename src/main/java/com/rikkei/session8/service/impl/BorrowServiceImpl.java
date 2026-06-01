@@ -2,8 +2,7 @@ package com.rikkei.session8.service.impl;
 
 import com.rikkei.session8.exception.BookAlreadyReturnException;
 import com.rikkei.session8.exception.ResourceNotFoundException;
-import com.rikkei.session8.model.dto.request.BookCreateDTO;
-import com.rikkei.session8.model.dto.request.BorrowBookDTO;
+import com.rikkei.session8.model.dto.request.BorrowCreateDTO;
 import com.rikkei.session8.model.entity.Book;
 import com.rikkei.session8.model.entity.Borrow;
 import com.rikkei.session8.model.entity.BorrowStatus;
@@ -22,7 +21,7 @@ public class BorrowServiceImpl implements BorrowService {
     private final BookRepository bookRepository;
 
     @Override
-    public Borrow createBorrow(BorrowBookDTO borrow) {
+    public Borrow createBorrow(BorrowCreateDTO borrow) {
         Book book = bookRepository.findById(borrow.getBookId())
                 .orElseThrow(() ->
                         new ResourceNotFoundException(

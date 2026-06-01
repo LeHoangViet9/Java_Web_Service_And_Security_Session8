@@ -38,15 +38,16 @@ public class GlobalExceptionHandle {
         return new ResponseEntity<>(new ErrorsResponse(
                 false,
                 "Errors data",
-                LocalDateTime.now()
-        ),HttpStatus.BAD_REQUEST);
+                LocalDateTime.now(),
+                HttpStatus.NOT_FOUND
+        ),HttpStatus.NOT_FOUND);
     }
     @ExceptionHandler(BookAlreadyReturnException.class)
     public ResponseEntity<ErrorsResponse> handleBookAlreadyReturnException(BookAlreadyReturnException ex) {
         return new ResponseEntity<>(new ErrorsResponse(
                 false,
                 "Fail to return",
-                LocalDateTime.now()
+                LocalDateTime.now(),HttpStatus.BAD_REQUEST
         ),HttpStatus.BAD_REQUEST);
     }
 }
